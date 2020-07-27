@@ -1,0 +1,6 @@
+Makefile
+*.so
+node_modules/
+
+binding.gyp
+package-lock.json

@@ -1,0 +1,235 @@
+{
+  "name": "mem",
+  "rules": {
+    "file": {
+      "type": "REPEAT",
+      "content": {
+        "type": "SYMBOL",
+        "name": "item"
+      }
+    },
+    "item": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "+"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "status"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "FIELD",
+          "name": "id",
+          "content": {
+            "type": "SYMBOL",
+            "name": "reference"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "FIELD",
+          "name": "title",
+          "content": {
+            "type": "SYMBOL",
+            "name": "text"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "body"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "body": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "text"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "item"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "reference"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "attachement"
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "attachement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "@"
+        },
+        {
+          "type": "PATTERN",
+          "value": "(\\w|[\\/.])+"
+        }
+      ]
+    },
+    "reference": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "&"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_word"
+        }
+      ]
+    },
+    "status": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "TODO"
+        },
+        {
+          "type": "STRING",
+          "value": "DOING"
+        },
+        {
+          "type": "STRING",
+          "value": "DONE"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "SCHEDULED("
+            },
+            {
+              "type": "SYMBOL",
+              "name": "date"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            }
+          ]
+        }
+      ]
+    },
+    "date": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "year",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "\\d{4}"
+              },
+              {
+                "type": "STRING",
+                "value": "-"
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "-"
+        },
+        {
+          "type": "FIELD",
+          "name": "month",
+          "content": {
+            "type": "PATTERN",
+            "value": "\\d{2}"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "-"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "day",
+              "content": {
+                "type": "PATTERN",
+                "value": "\\d{2}"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_word": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z_]\\w*"
+    },
+    "text": {
+      "type": "PATTERN",
+      "value": "[^{}+&@]+"
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "\\s"
+    }
+  ],
+  "conflicts": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": []
+}
+

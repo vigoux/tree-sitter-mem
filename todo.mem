@@ -1,0 +1,13 @@
++ SCHEDULED(2000-04-12) &test: My super duper thing {
+	Hey that's me, a content, dude
+	I still need to do &sub before
+
+	+ &sub: SubItem {
+		Sub content ?
+
+		+ &subsub: Inner item
+
+	}
+}
+
++ DOING &test2: My super todo item
