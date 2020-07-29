@@ -78,7 +78,7 @@
     "fields": {
       "id": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "reference",
@@ -108,6 +108,10 @@
         {
           "type": "status",
           "named": true
+        },
+        {
+          "type": "tag_list",
+          "named": true
         }
       ]
     }
@@ -131,6 +135,30 @@
         }
       ]
     }
+  },
+  {
+    "type": "tag",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "tag_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "tag",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "#",
+    "named": false
   },
   {
     "type": "&",

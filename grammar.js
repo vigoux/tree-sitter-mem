@@ -8,11 +8,16 @@ module.exports = grammar({
       seq(
         '+',
         optional($.status),
-        field('id', $.reference),
+        optional(field('id', $.reference)),
+        optional($.tag_list),
         ':',
         field('title', $.text),
         optional($.body),
       ),
+
+    tag_list: $ => repeat1($.tag),
+
+    tag: $ => seq('#', $._word),
 
     body: $ => seq(
       '{',

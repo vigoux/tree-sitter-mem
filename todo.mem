@@ -1,4 +1,4 @@
-+ SCHEDULED(2000-04-12) &test: My super duper thing {
++ SCHEDULED(2000-04-12) &test #hello #perso: My super duper thing {
 	Hey that's me, a content, dude
 	I still need to do &sub before
 
@@ -10,4 +10,4 @@
 	}
 }
 
-+ DOING &test2: My super todo item
++ DOING: My super todo item
